@@ -16,7 +16,7 @@ $default_red: #ee3939;
 $table_border_color: #cfdadd;
 
 @mixin calc($key, $value) 							{ #{$key}: -webkit-calc(#{$value}); #{$key}: -moz-calc(#{$value}); #{$key}: calc(#{$value}); }
-
+@mixin transitions($to,$duration,$type) 				{ -webkit-transition: $to $duration $type; -moz-transition: $to $duration $type; transition: $to $duration $type; }
 
 html,body 											{ width: 100%; height: 100%;}
 html 												{ font-family: 'Montserrat', sans-serif; }
@@ -26,12 +26,15 @@ h1 													{ font-size: 32px; }
 h2 													{ font-size: 28px; }
 h3 													{ font-size: 22px; }
 .help-block 										{ margin: 0; }
-.btn 												{ border: 0; border-radius: 0%;  font-weight: 500; font-size: $font_size; letter-spacing: 0.03rem; text-transform: uppercase;  padding: 8px 20px; }
+.btn 												{ border: 0; border-radius: 0%; @include transitions(all,1s,ease); font-weight: 500; font-size: $font_size; letter-spacing: 0.03rem; text-transform: uppercase;  padding: 8px 20px; }
 .btn-default 										{ background-color: $default_yellow; color: #fff;  
-	&:hover, &:focus, &:active						{ color: #fff; background: darken( $default_yellow, 5%); }
+	&:hover, &:focus, &:active						{ color: #fff; background: darken( $default_yellow, 10%); }
 }
 .btn_add 											{ background-color: $green_btn; color: #fff; 
-	&:hover, &:focus, &:active						{ color: #fff; background: darken( $green_btn, 5%); }
+	&:hover, &:focus, &:active						{ color: #fff; background: darken( $green_btn, 10%); }
+}
+.btn_remove 										{ background-color: $default_red; color: #fff; 
+	&:hover, &:focus, &:active						{ color: #fff; background: darken( $default_red, 10%); }
 }
 .loader 											{ width: inherit; height: inherit; background-color: rgba(255, 255, 255, 0.67); background-image: url(../images/flickr.gif);     background-repeat: no-repeat; background-position: 50%;  background-size: 65px; position: absolute; z-index: 1005; top: 0; 
 	.mdl-progress 									{ width: 100%; position: absolute; top: 50%; }
@@ -48,7 +51,7 @@ h3 													{ font-size: 22px; }
 	
 	.left_nav 										{ width: $nav_width; position: fixed; height: inherit; background: $base_nav_color; z-index: 1001; 
 		.head 										{ 
-			.title 									{ color: #fff; font-size: 21px; padding: 15px 10px; text-align: center; background: $base_nav_color_light; height: 50px; }
+			.title 									{ color: #fff; font-size: 19px; padding: 15px 10px; text-align: center; background: $base_nav_color_light; height: 50px; }
 			.user 									{ padding: 15px 10px; color: #fff; width: 100%;	border-bottom: 1px $base_nav_color_light solid;
 				.user_img 							{ width: 50px; height: 50px; display: block; margin: auto;  background: $base_nav_color_light; border-radius: 50%;  }
 				ul 									{ margin-top: 10px; 
@@ -67,10 +70,13 @@ h3 													{ font-size: 22px; }
 					ul.nav_item  					{
 						a 							{  font-size: $font_size - 1; letter-spacing: $letter_spacing; }
 					}
-					a 								{ padding: 12px 20px; font-size: $font_size; position: relative; display: block; text-decoration: none; color: #fff;  letter-spacing: $letter_spacing; border-bottom: 1px $base_nav_color_light solid;
-						i 							{ font-size: 16px; vertical-align: text-top; margin-right: 5px;}
+					a 								{ padding: 10px 20px; font-size: $font_size - 1; position: relative; display: block; text-decoration: none; color: #fff;  letter-spacing: $letter_spacing; border-bottom: 1px $base_nav_color_light solid;
+						i 							{ font-size: 14px; vertical-align: text-top; margin-right: 5px;}
 						&:hover  					{ background: $base_nav_color_light; }
 						&:focus  					{ background: $base_nav_color_light; }
+						&.heading 					{
+							&.active  				{ background: transparent; /* darken(, 3%);*/ }
+						}
 						&.active  					{ background: $default_blue /* darken(, 3%);*/ }
 
 						span.caret 					{ margin-top: 6px; }
@@ -87,7 +93,7 @@ h3 													{ font-size: 22px; }
 					h2 								{ font-size: $font_size + 12; margin-bottom: 15px; float: left; }
 					.breadcrumb 					{ float: right; font-size: $font_size - 2; background: none;  margin: 0;}
 					button 							{ font-size: $font_size - 1; letter-spacing: $letter_spacing; background: $default_purple; font-weight: 500; font-family: inherit; line-height: 32px; height: auto; 
-						&:hover 					{ background: darken($default_purple, 3%); }
+						&:hover 					{ background: darken($default_purple, 10%); }
 					}
 				}
 				.body 								{ padding: 20px; margin-bottom: 50px; background: #fff; box-shadow: 0px 1px 6px rgba(0,0,0,0.15);  font-size: $font_size - 1 ;
@@ -115,7 +121,7 @@ h3 													{ font-size: 22px; }
 									td 				{ border : 0; border-top: 1px $table_border_color solid; border-right: 1px $table_border_color solid; 
 										&:last-child{ border-right: 0; text-align: center;
 											a 		{ margin-right: 5px; text-decoration: none; color: $default_purple; 
-												&:hover {  color: darken($default_purple, 15%) }
+												&:hover {  color: darken($default_red, 15%) }
 											}
 										}
 									}
@@ -155,13 +161,21 @@ fieldset[disabled] .form-control 					{ background-color: #f7f7f7; }
 .select2-container--default .select2-selection--single { height: 34px; line-height: 34px; width: 100%; border-radius: 0; border: 1px $form_border solid;  }
 .select2-container--default .select2-selection--single .select2-selection__rendered { line-height: 34px; }
 .select2-results__option							{ padding: 10px; font-size: $font_size; }
+button.btn_cancel 									{ float: right; margin-left: 5px; }
 
+.short_modal 										{
+	.modal-dialog 									{ width: 400px; }
+	.modal-footer 									{ 
+		button.btn									{ padding: 6px 15px; font-size: $font_size  - 1; text-transform: capitalize; }
+	}
+}
 .modal												{ font-family: 'Montserrat', sans-serif;
 	.modal-dialog 									{ 
-		.modal-title 								{ font-size: $font_size; text-transform: uppercase; letter-spacing: 0.05rem;}
-		.modal-content 								{
+		.modal-title 								{ font-size: $font_size; text-transform: uppercase; letter-spacing: 0.03rem; font-weight: 500;}
+		.modal-content 								{ border-radius: 0;
 			.modal-header 							{ padding: 12px 15px; background: $base_nav_color;  color: #fff; }
 			.modal-body 							{ font-size: $font_size; }
+			.modal-footer 							{ padding-top: 0; border: 0;  }
 		}
 	}
 }

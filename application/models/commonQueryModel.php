@@ -63,6 +63,34 @@ class CommonQueryModel extends CI_Model{
        
     }
 
+    public function selectLastIndex($search_index){
+
+        $select_query = "SELECT `".$search_index['search_index']."` FROM `".$search_index['table']."` ORDER BY `".$search_index['search_index']."` DESC LIMIT 1 " ;
+ 
+        $query = $this->db->query($select_query); 
+
+        if (!$query) {
+
+        	$output = array(
+				'status' => 500 , 
+				'data' => 'Query Error',
+			);
+
+			return $output;
+
+		}else{
+
+			$output = array(
+				'status' => 200 , 
+				'data' => $query->result(),
+			);
+			return $output;
+		}
+
+       
+    }
+
+
 
     public function insertData($insert_vals){ 
 

@@ -34,6 +34,6 @@
  
 
 
-  <script src="<?php echo base_url(); ?>assets/js/supplier.js"></script>
-     
+  <script src="<?php echo base_url(); ?>assets/js/supplier/supplier.js"></script>
+
  

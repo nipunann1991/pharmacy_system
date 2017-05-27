@@ -12,7 +12,7 @@
 <script> 
 
   var server_urls = {
-    base_url : 'http://localhost/zigma_pos_php/index.php'
+    base_url : 'http://localhost/pharmacy_system/index.php'
   };
 
 
@@ -35,8 +35,7 @@
   $('html').on('click', '.left_nav a, .page_btn', function(event) {
     event.preventDefault();
     /* Act on the event */
-    $('.loader').removeClass('hide');
-    $('.left_nav a').removeClass('active');
+    $('.loader').removeClass('hide');  
 
     var page_url = $(this).attr('data-href');
 
@@ -52,14 +51,18 @@
 
   function loadPage(page_url){
 
+    $('#page').empty();  
+
+    $('.left_nav a').removeClass('active'); 
+    $('.left_nav a[data-href="'+page_url+'"]').addClass('active');
 
      $.ajax({
         url: 'index.php/pages/'+page_url,  
         dataType: 'html',
       })
       .done(function(data) {  
+      //  console.log(data)
         
-       // $('#page').empty(); 
         $('#page').html(data).addClass('animated fadeIn'); 
         $('.loader').addClass('animated fadeOut');
 
@@ -83,6 +86,9 @@
       .always(function() {
         console.log("complete");
       });
+
+
+      return false;
   }
 
    $('select').select2();

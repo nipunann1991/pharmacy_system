@@ -63,7 +63,7 @@ var datatable = $('html #emp_list').DataTable({
                 },
                 cancel: {
                     label: 'Cancel',
-                    className: 'btn-default'
+                    className: 'btn-default btn_cancel'
                 }
             },
             callback: function (result) {
@@ -113,14 +113,15 @@ var datatable = $('html #emp_list').DataTable({
             bootbox.confirm({
                 title: "Delete Category",
                 message: "Are you sure you want to delete this category ?",
+                className: 'short_modal',
                 buttons: {
                     confirm: {
-                        label: 'Delete Category',
-                        className: 'btn_add'
+                        label: 'Delete',
+                        className: 'btn_remove'
                     },
                     cancel: {
                         label: 'Cancel',
-                        className: 'btn-default'
+                        className: 'btn-default btn_cancel'
                     }
                 },
                 callback: function (result) {
@@ -307,7 +308,7 @@ var datatable = $('html #emp_list').DataTable({
                                 },
                                 cancel: {
                                     label: 'Cancel',
-                                    className: 'btn-default'
+                                    className: 'btn-default btn_cancel'
                                 }
                             },
                             callback: function (result) {

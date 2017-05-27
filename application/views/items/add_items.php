@@ -52,7 +52,7 @@
 			  	<div class="col-md-6">
 			  		<div class="form-group">
 					  	<div class="checkbox related_input">
-						  	<label><input type="checkbox" value="">Use same as Item Display Name.</label>
+						  	<label><input type="checkbox" id="use_item_display_name" value="">Use same as Item Display Name.</label>
 						</div>
 					</div>
 			  	</div>
@@ -173,4 +173,4 @@
     </form>
 </div>
 
-<script src="<?php echo base_url(); ?>assets/js/items.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/items/add_items.js"></script>

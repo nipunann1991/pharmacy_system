@@ -82,7 +82,7 @@
 	    <div class="form-group">
 			<div class="col-md-12">
 				<button class="btn btn_add submit" type="submit" id="add_supplier">Add Supplier</button>
-				<button class="btn btn-default" type="button">Cancel</button>
+				<button class="btn btn-default" type="button" id="cancel">Cancel</button>
 			</div> 
 		</div>
 	    <p>
@@ -95,4 +95,4 @@
 
 </div>
 
-<script src="<?php echo base_url(); ?>assets/js/supplier.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/supplier/add_supplier.js"></script>
