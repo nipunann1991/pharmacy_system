@@ -1,85 +1,70 @@
 <?php
+
+include 'commonController.php';
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CategoryController extends CI_Controller {
+class CategoryController extends CommonController {
 
 	function __construct() {
 		parent::__construct(); 
 		$this->load->model('commonQueryModel'); 
 	}
 
-	public function getCategories(){
+
+	public function getCategories(){  
+       return $this->getAllData__('categories');    
+    }
+
+
+    public function getLastIndex(){ 
 		
-		$data["results"] = $this->commonQueryModel->selectAllData('categories'); 
-		return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
-		
-	}
-
-
-	public function addCategories(){
-
-		$dataset = $this->input->post();
-
-		$insert_vals = array(
-			'table' => 'categories' , 
-			'columns' => "`id`, `cat_name`, `cat_desc`",
-			'values' =>  "'".$dataset['id']."', '".$dataset['cat_name']."', '".$dataset['cat_name']."'",
+		$search_index = array(
+			'table' => 'categories' ,   
+			'search_index' => 'id',
 		);
 
-		$data["results"] = $this->commonQueryModel->insertData($insert_vals);
-		return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
-
-		
-	}
+		return $this->selectLastIndex__($search_index);
+       
+    }
 
 
-	public function deleteCategories(){
+    public function getSingleCategory(){
 
-		$dataset = $this->input->post();
-
-		$delete_val = array(
-			'table' => 'categories' ,  
-			'data' =>  " id =".$dataset['id'],
+    	$search_index = array(
+			'columns' => '*' ,   
+			'table' => 'categories',
+			'data' => 'id= "'.$this->input->post('id').'"',
 		);
 
-		$data["results"] = $this->commonQueryModel->deleteData($delete_val);
-		return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
-
-	}
-
-
-	public function updateCategories(){
-
-		$dataset = $this->input->post();
-
-		$delete_val = array(
-			'table' => 'categories' ,  
-			'values' =>  " `id` = '".$dataset['id']."', `cat_name` = '".$dataset['cat_name']."', `cat_desc` = '".$dataset['cat_desc']."'",
-			'data' =>  " id =".$dataset['id'],
-		);
-
-		$data["results"] = $this->commonQueryModel->updateData($delete_val);
-		return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
-
-	}
+		return $this->selectCustomData__($search_index);
+ 
+    }
 
 
-	public function searchCategories(){
+    public function addCategories(){
 
 		$dataset = $this->input->post();
-
-		$search_vals = array(
-			'table' => 'categories', 
-			'columns' => '*', 
-			'data' =>  " id =".$dataset['id'],
-		);
-
-
-
-		$data["results"] = $this->commonQueryModel->selectCustomData($search_vals);
-		return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
-
+		return $this->insertData__('categories', $dataset); 
 	}
+ 	
+
+ 	public function deleteCategories(){
+
+		$dataset = $this->input->post(); 
+		return $this->deleteData__('categories', " id =".$dataset['id']);
+ 
+	}
+
+
+	public function updateCategories(){ 
+
+		$dataset = $this->input->post(); 
+		return $this->updateData__('categories', $dataset, " id =".$dataset['id']);
+ 
+	}
+
+
 
 
 	

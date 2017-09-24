@@ -39,7 +39,7 @@ class CommonQueryModel extends CI_Model{
 
     public function selectCustomData($search_data){
 
-        $select_query = "SELECT ".$search_data['columns']." FROM ".$search_data['table']." WHERE ".$search_data['data']." " ;
+        $select_query = "SELECT ".$search_data['columns']." FROM ".$search_data['table']." WHERE ".$search_data['data']."  " ;
         $query = $this->db->query($select_query); 
 
         if (!$query) {
@@ -66,6 +66,34 @@ class CommonQueryModel extends CI_Model{
     public function selectLastIndex($search_index){
 
         $select_query = "SELECT `".$search_index['search_index']."` FROM `".$search_index['table']."` ORDER BY `".$search_index['search_index']."` DESC LIMIT 1 " ;
+ 
+        $query = $this->db->query($select_query); 
+
+        if (!$query) {
+
+        	$output = array(
+				'status' => 500 , 
+				'data' => 'Query Error',
+			);
+
+			return $output;
+
+		}else{
+
+			$output = array(
+				'status' => 200 , 
+				'data' => $query->result(),
+			);
+			return $output;
+		}
+
+       
+    }
+
+
+    public function getTotalRows($search_index){
+ 
+        $select_query = "SELECT COUNT(*) as count FROM `".$search_index['table']."` " ;
  
         $query = $this->db->query($select_query); 
 

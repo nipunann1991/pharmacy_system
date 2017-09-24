@@ -1,29 +1,42 @@
 <?php
+
+include 'commonController.php';
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SupplierController extends CI_Controller {
+class SupplierController extends CommonController {
 
 	function __construct() {
 		parent::__construct(); 
 		$this->load->model('commonQueryModel'); 
 	}
 
-    public function getSuppliers(){
-        $data["results"] = $this->commonQueryModel->selectAllData('supplier'); 
-        return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
+	public function getLoginCredentials(){   
+
+        $search_index = array(
+			'columns' => 'l.*, r.role_name' ,   
+			'table' => 'login l, roles r',
+			'data' => 'username= "'.$this->input->post('username').'" AND password= "'.md5($this->input->post('password')).'" AND l.role_id = r.role_id',
+		);
+
+		return $this->selectCustomData__($search_index);   
     }
 
+    public function getSuppliers(){  
+       return $this->getAllData__('supplier');    
+    }
+
+     
     public function getSingleSupplier(){
 
     	$search_index = array(
 			'columns' => '*' ,   
 			'table' => 'supplier',
 			'data' => 'sup_id= "'.$this->input->post('sup_id').'"',
-		);
-
-        $data["results"] = $this->commonQueryModel->selectCustomData($search_index); 
-        return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
-    }
+		); 
+		
+       return $this->selectCustomData__($search_index);
+    } 
 
 
     public function getSupplierList(){
@@ -34,76 +47,46 @@ class SupplierController extends CI_Controller {
 			'data' => '1',
 		);
 
-        $data["results"] = $this->commonQueryModel->selectCustomData($search_index); 
-        return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
+       return $this->selectCustomData__($search_index);
     } 
 
 
     public function getLastIndex(){
  
-
 		$search_index = array(
 			'table' => 'supplier' ,   
 			'search_index' => 'sup_id',
 		);
 
-        $data["results"] = $this->commonQueryModel->selectLastIndex($search_index); 
-        return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
+      	return $this->selectLastIndex__($search_index);
     }
 
 
     public function addSupplier(){
 
-		$dataset = $this->input->post();
-
-		$insert_vals = array(
-			'table' => 'supplier' , 
-			'columns' => "`sup_id`, `sup_name`, `dealer`,`nic`, `address`, `tel`,`fax`, `email`",
-			'values' =>  "'".$dataset['sup_id']."', '".$dataset['sup_name']."', '".$dataset['dealer']."','".$dataset['nic']."', '".$dataset['address']."', '".$dataset['tel']."','".$dataset['fax']."', '".$dataset['email']."' ",
-		); 
-
-		$data["results"] = $this->commonQueryModel->insertData($insert_vals);
-		return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
-
+		$dataset = $this->input->post(); 
+		return $this->insertData__('supplier', $dataset); 
 		
 	}
  
-	  
-    
-    public function deleteSupplier(){
-
-		$dataset = $this->input->post(); 
-
-		$delete_val = array(
-			'table' => 'supplier' ,  
-			'data' =>  " sup_id =".$dataset['sup_id'],
-		);
-
-		$data["results"] = $this->commonQueryModel->deleteData($delete_val);
-		return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
-
-	}
-
-
+	   
 
 	public function updateSupplier(){ 
 
-		$dataset = $this->input->post(); 
+		$dataset = $this->input->post();  
+		return $this->updateData__('supplier', $dataset, " sup_id =".$dataset['sup_id']); 
 
-		$update_val = array(
-			'table' => 'supplier',  
-			'values' => $dataset['values'],
-			'data' =>  " sup_id =".$dataset['id'],
-		);
+	}
 
- 
-		$data["results"] = $this->commonQueryModel->updateData($update_val);
-		return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
 
-		//print_r($dataset);
+	public function deleteSupplier(){
+
+		$dataset = $this->input->post();  
+		return $this->deleteData__('supplier', " sup_id =".$dataset['sup_id']);
 
 	}
 	
+
  
 
 }

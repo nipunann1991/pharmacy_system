@@ -1,118 +1,37 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<div class="script_box">
-<script src="assets/js/material.min.js"></script> 
-<script src="http://fian.my.id/Waves/static/waves.min.js?v=0.7.1"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-</div>
 
-<script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.min.js"></script>
 
-  var server_urls = {
-    base_url : 'http://localhost/pharmacy_system/index.php'
-  };
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 
 
-   
-  function baseUrl(){
-    return server_urls.base_url;
-  }
+
+<script src="https://isonet.github.io/angular-barcode/node_modules/angular-barcode/dist/angular-barcode.js"></script>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script src="http://l-lin.github.io/angular-datatables/archives/vendor/datatables/media/js/jquery.dataTables.js"></script>
 
 
-  var url = localStorage.getItem('page_url')
+<script src="<?php echo base_url(); ?>assets/js/angular-datatables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+<script src="http://eriktufvesson.github.io/lib/bootbox/bootbox.js"></script> 
+
+<script src="<?php echo base_url(); ?>assets/js/angular-ui-notification.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular-validation.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular-validation-rule.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/barcode.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/app.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/appItem.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/appSupplier.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/appCategory.js"></script>
+
+<script src="<?php echo base_url(); ?>assets/js/route.js"></script>
+
+
  
-  if (typeof url !== 'undefined') {
-     loadPage(url); 
-  }else{
-    loadPage('dashboard'); 
-  }
-
-  
-
-  $('html').on('click', '.left_nav a, .page_btn', function(event) {
-    event.preventDefault();
-    /* Act on the event */
-    $('.loader').removeClass('hide');  
-
-    var page_url = $(this).attr('data-href');
-
-    localStorage.setItem('page_url',page_url);
-
-    $(this).addClass('active'); 
-
-    loadPage(page_url)
-
-  });
-
-
-
-  function loadPage(page_url){
-
-    $('#page').empty();  
-
-    $('.left_nav a').removeClass('active'); 
-    $('.left_nav a[data-href="'+page_url+'"]').addClass('active');
-
-     $.ajax({
-        url: 'index.php/pages/'+page_url,  
-        dataType: 'html',
-      })
-      .done(function(data) {  
-      //  console.log(data)
-        
-        $('#page').html(data).addClass('animated fadeIn'); 
-        $('.loader').addClass('animated fadeOut');
-
-        var scripts =  $('.script_box').html();
-        $('.script_box').empty();  
-        $('.script_box').append(scripts);
-
-        $("#page").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){ 
-          $(this).removeClass('animated fadeIn');
-        });
-
-        $(".loader").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){ 
-          $(this).removeClass('animated fadeOut').addClass('hide');
-        });
- 
-
-      })
-      .fail(function() {
-        console.log("error");
-      })
-      .always(function() {
-        console.log("complete");
-      });
-
-
-      return false;
-  }
-
-   $('select').select2();
-
-   
- 
-  function bootbox(){
-    bootbox.confirm({
-      title: 'text',
-      message: "This is a confirm with custom button text and color! Do you like it?",
-      buttons: {
-          confirm: {
-              label: 'Yes',
-              className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
-          },
-          cancel: {
-              label: 'No',
-              className: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
-          }
-      },
-      callback: function (result) {
-          console.log('This was logged in the callback: ' + result);
-      }
-  });
-  }
-
-</script>
