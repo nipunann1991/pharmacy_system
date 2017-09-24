@@ -17,6 +17,10 @@ class SettingsController extends CommonController {
     }
 
 
+    public function getCompanyDetails(){    
+		return $this->getAllData__('company');   
+    }
+
     public function getUsers(){    
 
 		$search_index = array(
@@ -44,6 +48,15 @@ class SettingsController extends CommonController {
 		$dataset = $this->input->post();  
 		return $this->deleteData__('login', " login_id =".$dataset['login_id']);
 
+	}
+
+
+	public function updateCompanyDetails(){ 
+
+		$dataset = $this->input->post(); 
+		//print_r($dataset);
+		return $this->updateData__('company', $dataset, " id =".$dataset['id']);
+ 
 	}
 	 
 

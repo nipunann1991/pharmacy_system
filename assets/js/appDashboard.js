@@ -34,6 +34,8 @@ app.controller('dashboardCtrl', ['$scope','$location', 'ajaxRequest', 'goTo', 'm
 		});
     };
 
+
+  
     $scope.getChart();
 
 }]);

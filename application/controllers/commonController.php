@@ -54,16 +54,19 @@ class CommonController extends CI_Controller {
 		return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
     }
 
-    public function updateData__($table, $dataset){
+   	
+   	public function updateData__($table, $dataset, $where){
 
     	$update_val = array(
 			'table' => $table,  
-			'values' => $dataset, 
+			'values' => $this->setDataUpdateQuery($dataset),
+			'data' => $where,
 		);
  
 		$data["results"] = $this->commonQueryModel->updateData($update_val);
 		return $this->output->set_output(json_encode($data["results"], JSON_PRETTY_PRINT));
     }
+
 
    
 

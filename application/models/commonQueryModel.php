@@ -174,7 +174,6 @@ class CommonQueryModel extends CI_Model{
     public function updateData($update_val){
  
     	$select_query =  "UPDATE ".$update_val['table']." SET ".$update_val['values']." WHERE ".$update_val['data']."" ;
-        //	print_r($select_query); exit();
         $query = $this->db->query($select_query); 
 
         if (!$query) {

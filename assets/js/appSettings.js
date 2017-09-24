@@ -10,6 +10,15 @@ app.controller('SettingsCtrl', ['$scope','$location', 'ajaxRequest', 'goTo', 'me
       	$scope.getRoles = response.data.data; 
 	});
 
+    ajaxRequest.post('SettingsController/getCompanyDetails').then(function(response) {
+        $scope.getCompanyDetails = response.data.data[0]; 
+
+        $scope.company_name = $scope.getCompanyDetails.name;
+        $scope.company_address = $scope.getCompanyDetails.address;
+        $scope.company_tel = $scope.getCompanyDetails.tel;
+        $scope.company_email = $scope.getCompanyDetails.email;
+
+    });
 
 
     $scope.getUsersList = function(){
@@ -89,7 +98,35 @@ app.controller('SettingsCtrl', ['$scope','$location', 'ajaxRequest', 'goTo', 'me
 
 
         });
+    };
+
+
+    $scope.updateCompanyDetails = function(){
+        
+        $scope.data = $.param({  
+            id: 1,
+            name: $scope.company_name,   
+            address: $scope.company_address,  
+            tel: $scope.company_tel, 
+            email: $scope.company_email,  
+        });
+
+       // console.log($scope.data)
+
+        ajaxRequest.post('SettingsController/updateCompanyDetails',$scope.data).then(function(response) {
+                 
+            if (response.status == 200) {
+                Notification.success('Company details has been updated successfully.'); 
+                $scope.getUsersList();
+                
+             }else if(response.status == 500 || response.status == 404){
+                Notification.error('An error occured while updating. Please try again.'); 
+             } 
+
+        });
+          
     }
+
 
 
 }]);

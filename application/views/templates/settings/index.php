@@ -16,6 +16,69 @@
 		<div ng-cloak>
 		  <md-content>
 		    <md-tabs md-dynamic-height md-border-bottom>
+		    	<md-tab label="Company ">
+			        <md-content class="md-padding"> 
+			          	 
+		          	 	<form class="form-horizontal" name="companyDetailsForm" id="commentForm" > 
+
+				        	<div class="row">
+					            <div class="col-md-6">
+						 			<div class="form-group">
+									    <label class="control-label col-sm-12" for="company_name">Company Name : <small class="help-block hide ">Must be a numeric value</small></label>
+									    <div class="col-sm-12" ng-class="{ 'has-error' : !companyDetailsForm.company_name.$pristine && companyDetailsForm.company_name.$touched && companyDetailsForm.company_name.$invalid }">
+									      <input type="text" class="form-control" id="company_name" name="company_name" ng-model="company_name"  required>  
+									      <label class="error" >This field is required.</label>  
+									    </div>
+								  	</div>
+						 		</div>  
+							  	<div class="clearfix"></div>
+							</div> 
+					        <div class="row">
+					        	<div class="col-md-6">
+						 			<div class="form-group">
+									    <label class="control-label col-sm-12" for="company_address">Company Address : <small class="help-block hide ">Must be a numeric value</small></label>
+									    <div class="col-sm-12" ng-class="{ 'has-error' : !companyDetailsForm.company_address.$pristine && companyDetailsForm.company_address.$touched && companyDetailsForm.company_address.$invalid }">
+									      <textarea type="text" class="form-control" id="company_address" name="company_address" ng-model="company_address"  required>  </textarea>
+									      <label class="error" >This field is required.</label>  
+									    </div>
+								  	</div>
+						 		</div>
+						 		<div class="clearfix"></div>
+					        </div>
+					        <div class="row">
+					            <div class="col-md-6">
+						 			<div class="form-group">
+									    <label class="control-label col-sm-12" for="company_tel">Company Tel : <small class="help-block hide ">Must be a numeric value</small></label>
+									    <div class="col-sm-12" ng-class="{ 'has-error' : !companyDetailsForm.company_tel.$pristine && companyDetailsForm.company_tel.$touched && companyDetailsForm.company_tel.$invalid }">
+									      <input type="text" class="form-control" id="company_tel" name="company_tel" ng-model="company_tel"  required>  
+									      <label class="error" >This field is required.</label>  
+									    </div>
+								  	</div>
+						 		</div>  
+							  	<div class="clearfix"></div>
+							</div>
+							<div class="row">
+					            <div class="col-md-6">
+						 			<div class="form-group">
+									    <label class="control-label col-sm-12" for="company_email">Company Email : <small class="help-block hide ">Must be a numeric value</small></label>
+									    <div class="col-sm-12" ng-class="{ 'has-error' : !companyDetailsForm.company_email.$pristine && companyDetailsForm.company_email.$touched && companyDetailsForm.company_email.$invalid }">
+									      <input type="text" class="form-control" id="company_email" name="company_email" ng-model="company_email"  required>  
+									      <label class="error" >This field is required.</label>  
+									    </div>
+								  	</div>
+						 		</div>  
+							  	<div class="clearfix"></div>
+							</div>
+						  	<div class="form-group" >
+								<div class="col-md-12"  >  <!-- ng-hide="companyDetailsForm.$invalid" -->
+									<md-button class="btn_add" type="button" id="add_item" ng-click="updateCompanyDetails()">Update Details</md-button>
+									<md-button class="btn-default" ng-click="close()">Close</md-button> 
+								</div> 
+							</div>
+					    </form>
+			           
+			        </md-content>
+		      	</md-tab>
 		      	<md-tab label="Users">
 			        <md-content class="md-padding">
 			        	<div class="row">
@@ -55,12 +118,7 @@
 						</table>
 			        </md-content>
 		      	</md-tab>
-		      	<md-tab label="Company ">
-			        <md-content class="md-padding"> 
-			          	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-			           
-			        </md-content>
-		      	</md-tab>
+		      
 		     
 		    </md-tabs>
 		  </md-content>

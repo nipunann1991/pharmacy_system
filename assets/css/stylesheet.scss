@@ -241,7 +241,7 @@ button.blue 										{ background: $dafault_light_blue !important; color: #fff;
 	} 
 }
 .has-error 											{
-	input, select 									{ border: 1px #f30b0b solid !important; }
+	input, select, textarea							{ border: 1px #f30b0b solid !important; }
 	.error 											{ display: block; }
 }
 .error 												{ display: none; }
@@ -318,3 +318,5 @@ md-checkbox 										{ margin-bottom: 5px}
  	.right_content 			{ width: 100%;}
 
 }
+
+ 
