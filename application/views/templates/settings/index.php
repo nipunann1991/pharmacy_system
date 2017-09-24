@@ -22,7 +22,8 @@
 		          	 	<form class="form-horizontal" name="companyDetailsForm" id="commentForm" > 
 
 				        	<div class="row">
-					            <div class="col-md-6">
+				        		<div class="col-md-6">
+				        			 
 						 			<div class="form-group">
 									    <label class="control-label col-sm-12" for="company_name">Company Name : <small class="help-block hide ">Must be a numeric value</small></label>
 									    <div class="col-sm-12" ng-class="{ 'has-error' : !companyDetailsForm.company_name.$pristine && companyDetailsForm.company_name.$touched && companyDetailsForm.company_name.$invalid }">
@@ -30,23 +31,15 @@
 									      <label class="error" >This field is required.</label>  
 									    </div>
 								  	</div>
-						 		</div>  
-							  	<div class="clearfix"></div>
-							</div> 
-					        <div class="row">
-					        	<div class="col-md-6">
+						 		
 						 			<div class="form-group">
 									    <label class="control-label col-sm-12" for="company_address">Company Address : <small class="help-block hide ">Must be a numeric value</small></label>
 									    <div class="col-sm-12" ng-class="{ 'has-error' : !companyDetailsForm.company_address.$pristine && companyDetailsForm.company_address.$touched && companyDetailsForm.company_address.$invalid }">
-									      <textarea type="text" class="form-control" id="company_address" name="company_address" ng-model="company_address"  required>  </textarea>
+									      <textarea type="text" class="form-control" id="company_address" name="company_address" ng-model="company_address" rows="5" required>  </textarea>
 									      <label class="error" >This field is required.</label>  
 									    </div>
 								  	</div>
-						 		</div>
-						 		<div class="clearfix"></div>
-					        </div>
-					        <div class="row">
-					            <div class="col-md-6">
+						 		
 						 			<div class="form-group">
 									    <label class="control-label col-sm-12" for="company_tel">Company Tel : <small class="help-block hide ">Must be a numeric value</small></label>
 									    <div class="col-sm-12" ng-class="{ 'has-error' : !companyDetailsForm.company_tel.$pristine && companyDetailsForm.company_tel.$touched && companyDetailsForm.company_tel.$invalid }">
@@ -54,11 +47,7 @@
 									      <label class="error" >This field is required.</label>  
 									    </div>
 								  	</div>
-						 		</div>  
-							  	<div class="clearfix"></div>
-							</div>
-							<div class="row">
-					            <div class="col-md-6">
+						 		
 						 			<div class="form-group">
 									    <label class="control-label col-sm-12" for="company_email">Company Email : <small class="help-block hide ">Must be a numeric value</small></label>
 									    <div class="col-sm-12" ng-class="{ 'has-error' : !companyDetailsForm.company_email.$pristine && companyDetailsForm.company_email.$touched && companyDetailsForm.company_email.$invalid }">
@@ -66,11 +55,21 @@
 									      <label class="error" >This field is required.</label>  
 									    </div>
 								  	</div>
-						 		</div>  
-							  	<div class="clearfix"></div>
+							 		
+								  	<div class="clearfix"></div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+									    <label class="control-label col-sm-12" for="company_note">Note : </label>
+									    <div class="col-sm-12" >
+									      <textarea type="text" class="form-control" id="company_note" name="company_note" ng-model="company_note" rows="17" >  </textarea>  
+									    </div>
+								  	</div>
+								</div>
 							</div>
 						  	<div class="form-group" >
-								<div class="col-md-12"  >  <!-- ng-hide="companyDetailsForm.$invalid" -->
+								<div class="col-md-12"  ><br/>  <!-- ng-hide="companyDetailsForm.$invalid" -->
 									<md-button class="btn_add" type="button" id="add_item" ng-click="updateCompanyDetails()">Update Details</md-button>
 									<md-button class="btn-default" ng-click="close()">Close</md-button> 
 								</div> 

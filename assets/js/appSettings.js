@@ -109,6 +109,7 @@ app.controller('SettingsCtrl', ['$scope','$location', 'ajaxRequest', 'goTo', 'me
             address: $scope.company_address,  
             tel: $scope.company_tel, 
             email: $scope.company_email,  
+            note: $scope.company_note,
         });
 
        // console.log($scope.data)
