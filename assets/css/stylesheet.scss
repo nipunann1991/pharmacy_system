@@ -84,6 +84,17 @@ button.blue 										{ background: $dafault_light_blue !important; color: #fff;
 		i 											{ font-size: 100px; position: absolute; bottom: 0; right: -25px; color: rgba(255, 255, 255, 0.21); }
 	}
 }
+
+
+$item_width: 120px;
+.pos_item 											{ width: $item_width; padding: 10px; border: 1px #eee solid; @include box_shadow(); cursor: pointer; float: left; min-height: 180px; margin-right: 10px;
+	.pos_item_img 									{ width: 100%; height: $item_width - 20px; background-color: #eee; background-size: cover; }
+	.pos_item_details 								{ padding: 10px 0 0 0;  
+		span.title 									{ font-weight: 500; display: block; margin-bottom: 5px; }
+		span.category								{ font-size: 10px; letter-spacing: 0.02rem; display: block; }
+	}
+}
+
 .block 												{
 	.block_inner 									{  @include box_shadow(); 
 		.block_head 								{ padding: 10px 15px; background: $base_nav_color; color: #fff;

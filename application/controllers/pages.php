@@ -130,6 +130,15 @@ class Pages extends CI_Controller {
 	}
 	
 
+	/*
+	* Settings
+	*/
+
+	 public function POS(){ 
+		$this->load->view('templates/POS-app/index');
+	}
+
+
 
 
 

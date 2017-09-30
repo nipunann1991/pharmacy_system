@@ -20,6 +20,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     .when("/suppliers/add-suppliers", {  templateUrl : "index.php/Pages/addSupplier",  css: 'style.css' })
     .when("/suppliers/edit-suppliers/:id", {  templateUrl : "index.php/Pages/editSupplier",  css: 'style.css' })
 
+    .when("/POS-app", { templateUrl : "index.php/Pages/POS",  css: 'style.css' })
+
     .when("/settings", { templateUrl : "index.php/Pages/settings",  css: 'style.css' })
 
  
@@ -39,6 +41,9 @@ app.controller('navCtrl', function($scope) {
 
   $scope.nav_links = [
     { page_name: 'Dashboard' ,page_icon: 'icon-dashboard' , page_link: '#/', page_sublinks: '' },
+
+    { page_name: 'POS App' ,page_icon: 'glyphicon glyphicon-qrcode' , page_link: '#/POS-app', page_sublinks: '' },
+
     { page_name: 'Items' ,page_icon: 'icon-shopping-basket' , page_link: '#items' , page_sublinks: [
         {subpage_name: 'View Items' ,subpage_icon: 'icon-shopping-basket' , subpage_link: '#items'},
         {subpage_name: 'Add Items' ,subpage_icon: 'icon-shopping-basket' , subpage_link: '#items/add-item'}, 
@@ -50,9 +55,12 @@ app.controller('navCtrl', function($scope) {
     ]},
     { page_name: 'Suppliers' ,page_icon: 'icon-worker-loading-boxes' , page_link: '#suppliers' , page_sublinks: [
         {subpage_name: 'View Suppliers' ,subpage_icon: 'icon-shopping-basket' , subpage_link: '#suppliers'},
-        {subpage_name: 'Add Suppliers' ,subpage_icon: 'icon-shopping-basket' , subpage_link: '#suppliers/add-suppliers'},
-    ]},
+        {subpage_name: 'Add Suppliers' ,subpage_icon: 'icon-shopping-basket' , subpage_link: '#suppliers/add-suppliers'}, 
 
+    ]},
+ 
+   
+    
     { page_name: 'Settings' ,page_icon: 'glyphicon glyphicon-cog' , page_link: '#/settings', page_sublinks: '' },
   ];
 

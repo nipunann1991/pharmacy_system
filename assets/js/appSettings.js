@@ -17,6 +17,7 @@ app.controller('SettingsCtrl', ['$scope','$location', 'ajaxRequest', 'goTo', 'me
         $scope.company_address = $scope.getCompanyDetails.address;
         $scope.company_tel = $scope.getCompanyDetails.tel;
         $scope.company_email = $scope.getCompanyDetails.email;
+        $scope.company_note = $scope.getCompanyDetails.note;
 
     });
 
