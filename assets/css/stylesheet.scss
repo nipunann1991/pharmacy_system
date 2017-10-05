@@ -36,6 +36,7 @@ button 												{
 .noPrint 											{ display: block; margin: auto !important; }
 md-content 											{ background: transparent; }
 .md-button.top_btn 									{ margin-bottom: 15px}
+.padding0 											{ padding: 0;}
 .inner_form 										{ background: #f9f9f9; border: 1px $form_border solid; margin: 20px 0 0 0; padding: 20px 0; }
 .btn 												{ border: 0; border-radius: 0%; @include transitions(all,1s,ease); font-weight: 500; font-size: $font_size; letter-spacing: 0.03rem; text-transform: uppercase;  padding: 8px 20px; }
 .quick_summery										{ margin-bottom: 40px}
@@ -94,6 +95,34 @@ $item_width: 120px;
 		span.category								{ font-size: 10px; letter-spacing: 0.02rem; display: block; }
 	}
 }
+
+
+.purchase_items 									{ 
+	.form-group 									{
+		input 										{ border-radius: 0; box-shadow: none; }
+	}
+	.invoice 										{ border: 1px #eaeaea solid; border: 1px solid #ccc;
+		.heading 									{ margin-bottom: 0; overflow: hidden;  padding: 10px 0; border-bottom: 2px #eaeaea solid;  }
+		.content 									{ min-height: 350px; 
+			.items_list 							{
+				.item 								{ text-align: left; padding: 8px 10px; border-bottom: 1px #efeeee solid; overflow: hidden;
+					.item_left 						{ width: 70%; float: left;
+						span.title 					{ display: block; font-weight: 500; font-size: $font_size; margin-bottom: 3px; }
+						span.unit_price, span.qty,
+						span.barcode 				{ color: #717171; font-size: $font_size - 2; }
+						span.barcode 				{ padding-right: 5px; margin-right: 5px; border-right: 1px #bfbfbf solid; }
+					}
+					.item_right 					{ width: 30%; float: left; text-align: right;
+						span.total 					{  font-weight: 500; font-size: $font_size + 1; display: inline-block; }
+						a 							{ margin-left: 5px; font-size: $font_size + 1; }
+					}
+				}
+				// .price, .total 						{ text-align: right; }
+			}
+		}
+	}
+}
+ 
 
 .block 												{
 	.block_inner 									{  @include box_shadow(); 
